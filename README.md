@@ -1,190 +1,115 @@
-# Vue 3 + Vite
-
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
-
-
-Storing and Accessing Data in Databases
+Exploring APIs
 
  
 
-Overview:
+Objective:  
+
+Apply the knowledge gained from the lesson on "Fetching Data from APIs" to create a practical project that demonstrates understanding of API concepts and implementation.
 
  
 
-You will implement advanced CRUD (Create, Read, Update, Delete) operations on a user database table using Python and SQL. 
+Task Description:  
+
+You are required to develop a simple web application that fetches data from a public API and displays it to the user. The application should incorporate the following subtopics covered in the lesson:
 
  
 
-Assignment Tasks:
+Making API Requests
+Handling API Responses
+Consuming RESTful APIs
+JSON Parsing
+ 
 
-Enhanced Database Schema Design:
-   - Design an enhanced database schema for storing user information. Include additional fields for user profile information, such as age, gender, and address.
+Instructions:
 
-Database Setup and Migration:
-   - Set up a SQLite database using Python's SQLite3 module.
+Choose a public API: Research and select a public API that provides data relevant to your interests or a specific topic of your choice. Some examples include weather APIs, news APIs, or movie databases.
+Public API ListLinks to an external site.
+brunoLinks to an external site.
+Set up your development environment: Use any web development tools or frameworks of your choice (e.g., HTML, CSS, JavaScript, React, Vue.js) to create the frontend of your web application.
+Make API requests: Use JavaScript's fetch API or any library/framework (e.g., axios) to make HTTP requests to the chosen API endpoints. Ensure proper error handling for failed requests.
+Handle API responses: Parse the JSON data returned by the API responses and extract relevant information needed for your application.
+Display data to the user: Present the fetched data dynamically on your web application's user interface. This could include displaying lists, images, or any other relevant content.
+Test your application: Thoroughly test your application to ensure that it functions as expected. Verify that data is fetched correctly and displayed accurately to the user.
+Documentation: Provide documentation for your application, including instructions on how to run the code and any additional details about the API used and its endpoints.
+ 
 
-   - Create a user table in the database based on the enhanced schema designed in Task 1.
+Submission Guidelines:
 
-   - Implement a migration script to update the existing user table with the new schema changes.
+- Submit your assignment as a zip file containing all necessary files, including HTML, CSS, JavaScript, and any other assets used in your project.
 
-CRUD Operations Implementation:
-   - Write Python functions to perform the following advanced CRUD operations on the user table:
-
-     - `create_user_with_profile`: Create a new user with profile information in the database.
-
-     - `retrieve_users_by_criteria`: Retrieve users based on specified criteria, such as age range or gender.
-
-     - `update_user_profile`: Update user profile information in the database.
-
-     - `delete_users_by_criteria`: Delete users based on specified criteria, such as address or gender.
-
-Unit Testing:
-   - Write comprehensive unit tests to validate the functionality of each advanced CRUD operation.
-
-   - Ensure that the unit tests cover various scenarios, including edge cases and error handling.
+- Include a README.md file detailing the purpose of your application, the API used, and any additional information required to run the project.
 
  
 
-Assignment Submission:
+Evaluation Criteria:
 
-- Once you have completed the assignment, submit the following files:
+- Successful retrieval and display of data from the chosen API.
 
-  - `advanced_user_operations.py`: Python file containing the implementation of advanced CRUD operations.
+- Effective handling of API responses and errors.
 
-  - `test_advanced_user_operations.py`: Python file containing the provided unit tests for advanced CRUD operations.
+- User-friendly interface and presentation of data.
 
- 
+- Code organization, readability, and adherence to best practices.
 
----
-
- 
-
-Solution Framework:
+- Documentation completeness and clarity.
 
  
 
-```python
-
-# advanced_user_operations.py
-
- 
-
-import sqlite3
+!NOW TEST!
+(Retrieving Weather Information from OpenWeatherMap API)
 
  
 
-class AdvancedUserOperations:
+Objective:  
 
-    def __init__(self):
-
-        self.conn = sqlite3.connect('user_database.db')
-
-        self.cursor = self.conn.cursor()
+To verify that the web application successfully retrieves weather information from the OpenWeatherMap API and displays it to the user.
 
  
 
-    def create_user_with_profile(self, name, email, password, age=None, gender=None, address=None):
+Test Steps:
 
-        pass
+Launch Application:
+   - Open the web application in a browser.
 
- 
+Input Location:
+   - In the provided input field or dropdown menu, enter a valid location (e.g., city name, ZIP code) for which you want to retrieve weather information.
 
-    def retrieve_users_by_criteria(self, min_age=None, max_age=None, gender=None):
+Submit Request:
+   - Click on the "Submit" button or trigger the event to initiate the API request.
 
-        pass
+Verify API Request:
+   - Check that the application sends a GET request to the OpenWeatherMap API endpoint with the specified location as a parameter.
 
- 
+Receive API Response:
+   - Confirm that the application receives a valid response from the API, containing weather data for the specified location.
 
-    def update_user_profile(self, email, age=None, gender=None, address=None):
+Parse API Response:
+   - Ensure that the application correctly parses the JSON response from the API and extracts relevant weather information, such as temperature, humidity, and weather conditions.
 
-        pass
+Display Weather Information:
+   - Verify that the retrieved weather information is displayed accurately on the web page's user interface.
 
- 
+   - Check that the temperature, humidity, and weather condition icons or descriptions are visible and correctly represented.
 
-    def delete_users_by_criteria(self, gender=None):
+Test Error Handling:
+   - Test scenarios where the API request fails due to reasons such as network issues, invalid location, or API rate limiting.
 
-        pass
+   - Ensure that the application gracefully handles such errors and provides appropriate error messages or fallback behavior to the user.
 
- 
-
-    def __del__(self):
-
-        self.conn.close()
-
- 
-
-```
-
-Test Case
-
-
-Test Case Script: Save the following script in a file with a `.py` extension, such as `test_case.py`. This script tests the functionality of the `AdvancedUserOperations` class by running various scenarios and printing the results.
- 
-
-   ```python
-
-   from advanced_user_operations import AdvancedUserOperations
+Test Multiple Locations:
+   - Repeat the above steps for multiple locations to validate that the application can retrieve and display weather information for different locations.
 
  
 
-   # Initialize AdvancedUserOperations instance
+Expected Results:
 
-   advanced_user_ops = AdvancedUserOperations()
+- The application successfully retrieves weather information from the OpenWeatherMap API for the specified location.
 
- 
+- The weather data is accurately parsed and displayed on the web page's user interface.
 
-   # Test creating a new user with profile information
+- Error handling mechanisms effectively handle API request failures and provide meaningful feedback to the user.
 
-   print("Creating a new user...")
-
-   result_create = advanced_user_ops.create_user_with_profile('John Doe', 'john.doe@example.com', 'test123', age=30, gender='Male', address='123 Main St')
-
-   print("User creation result:", result_create)
-
- 
-
-   # Test retrieving users based on specified criteria
-
-   print("\nRetrieving users...")
-
-   users = advanced_user_ops.retrieve_users_by_criteria(min_age=25, max_age=40, gender='Male')
-
-   print("Retrieved users:", users)
-
- 
-
-   # Test updating user profile information
-
-   print("\nUpdating user profile...")
-
-   result_update = advanced_user_ops.update_user_profile('john.doe@example.com', age=35, address='456 Oak St')
-
-   print("User profile update result:", result_update)
-
- 
-
-   # Test deleting users based on specified criteria
-
-   print("\nDeleting users...")
-
-   result_delete = advanced_user_ops.delete_users_by_criteria(gender='Female')
-
-   print("User deletion result:", result_delete)
-
-   ```
-
- 
-
-Run Command: Open a terminal or command prompt, navigate to the directory where the test case script is located, and execute the following command:
- 
-
-   ```
-
-   python test_case.py
+- The application maintains functionality and performance when tested with multiple locations.
 
  
 
