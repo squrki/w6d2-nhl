@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import usePromise from 'react-promise'
 
 const buttons = ["Human", "Humanoid", "Robot", "Alien", "Animal", "Mythological Creature"]
 
@@ -7,12 +6,8 @@ function App() {
   const url = "https://rickandmortyapi.com/api/character/"
   const [species, setSpecies] = useState("")
   const [charData, setCharData] = useState([])
-  // let images = []
 
   useEffect(() => {
-
-    console.log(species)
-
     const getRandom = (max) => {
       const minCeiled = Math.ceil(1);
       const maxFloored = Math.floor(max);
@@ -41,7 +36,6 @@ function App() {
     <div>
       <h1>Rick & Morty Characters</h1>
       {element}
-      {/* {picture} */}
       <div>
         <h2>{charData.name}</h2>
         <img src={charData.image} />
