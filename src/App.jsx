@@ -1,65 +1,53 @@
 import React, { useState, useEffect } from 'react'
+import usePromise from 'react-promise'
 
-
-
-const teams = ["ANA", "ARI", "BOS", "BUF", "CAR", "CBJ", "CGY", "CHI", "COL", "DAL", "DET", "EDM", "FLA", "LAK", "MIN", "MTL", "NJD", "NSH", "NYI", "NYR",
-  "OTT", "PHI", "PIT", "SEA", "SJS", "STL", "TBL", "TOR", "VAN", "VGK", "WPG", "WSH"]
-
-// const [info, setInfo] = useState([])
-// https://records.nhl.com/site/api/franchise?include=teams.active&include=teams.logos
-
-
+const buttons = ["Human", "Humanoid", "Robot", "Alien", "Animal", "Mythological Creature"]
 
 function App() {
-  // const [count, setCount] = useState(0)
-  const [team, setTeam] = useState("ANA")
-  // const [info, setInfo]
-  const url = "https://api-web.nhle.com/v1/club-stats-season/"
+  const url = "https://rickandmortyapi.com/api/character/"
+  const [species, setSpecies] = useState("")
+  const [charData, setCharData] = useState([])
+  // let images = []
 
-
-
-  // const getButtons = () => {
-  //   const url = "https://records.nhl.com/site/api/franchise?include=teams.active&include=teams.logos"
-  //   const data = fetch(url, { mode: 'no-cors' })
-  //   console.log(data)
-  // }
   useEffect(() => {
-    fetch(url + team).then((response) => response.json())
+
+    console.log(species)
+
+    const getRandom = (max) => {
+      const minCeiled = Math.ceil(1);
+      const maxFloored = Math.floor(max);
+      return (Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled))
+    }
+
+    const getData = () => fetch(url + "/?species=" + species).then((response) => response.json())
       .then((data) => {
-        console.log(data.results)
+        setSpecies("")
+        return (data.results[getRandom(20)])
       })
-  }, [])
-  // getButtons()
-  // const url = "https://records.nhl.com/site/api/franchise?include=teams.active&include=teams.logos"
-  // const data = fetch(url, { mode: 'no-cors' })
-  //   .then(res => res.json())
+    if (species != "") {
+      getData().then((x) => setCharData(x))
+    }
+  }, [species])
 
-  // console.log(data)
-
-
-  let element = teams.map(function (val) {
+  let element = buttons.map(function (val) {
     return (
       <>
-        <button onClick={setTeam(val)} title={val}>{val}</button>
+        <button onClick={() => setSpecies(val)} key={val} title={val}>{val}</button>
       </>
     );
   })
 
   return (
     <div>
-      <h1>NHL Records</h1>
+      <h1>Rick & Morty Characters</h1>
       {element}
+      {/* {picture} */}
+      <div>
+        <h2>{charData.name}</h2>
+        <img src={charData.image} />
+      </div>
     </div>
   )
 }
 
 export default App
-
-
-// GET https://api-web.nhle.com/v1/club-stats-season/TEAM_ABBR
-
-// https://records.nhl.com/site/api/franchise?include=teams.id&include=teams.active&include=teams.triCode&include=teams.placeName&include=teams.commonName&include=teams.fullName&include=teams.logos&include=teams.conference.name&include=teams.division.name&include=teams.franchiseTeam.firstSeason.id&include=teams.franchiseTeam.lastSeason.id&include=teams.franchiseTeam.teamCommonName
-
-// https://records.nhl.com/site/api/franchise?include=teams.id&include=teams.active&include=teams.triCode&include=teams.logos
-
-// https://records.nhl.com/site/api/franchise?include=teams.active&include=teams.logos
